@@ -13,7 +13,8 @@ imv caja atril mousepad engrampa paperwork dnf5-plugins firewalld NetworkManager
 NetworkManager-bluetooth NetworkManager-openvpn NetworkManager-openvpn-gnome \ 
 sane-backends sane-backends-drivers-cameras sane-backends-drivers-scanners rsync \ 
 rootfiles system-config-printer-udev system-config-printer-libs systemd-networkd \
-distrobox cups buildah bluez-cups appstream
+distrobox cups buildah bluez-cups appstream open264 openvpn wget2 zip unzip \
+tcpdump symlinks systemd-container
 
 
 dnf -y copr enable avengemedia/dms
