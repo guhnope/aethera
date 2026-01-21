@@ -7,10 +7,10 @@ dnf remove -y vim-minimal vim-enhanced firefox firefox-langpacks gnome-keyring \
 nano nano-default-editor 
 
 dnf install --setopt=install_weak_deps=False -y  \
-greetd greetd-selinux neovim tcpdump symlinks  \
-dnf5-plugins firewalld NetworkManager-wifi open264 zip unzip \
+greetd greetd-selinux neovim tcpdump symlinks appstream cups \
+dnf5-plugins firewalld NetworkManager-wifi zip unzip \
 NetworkManager-bluetooth NetworkManager-openvpn NetworkManager-openvpn-gnome 
-#cups bluez-cups appstream open264 openvpn wget2 zip unzip rsync
+#cups bluez-cups appstream open264 openvpn wget2 rsync
 #sane-backends-drivers-cameras sane-backends-drivers-scanners systemd-container
 #rootfiles system-config-printer-udev system-config-printer-libs systemd-networkd
 
