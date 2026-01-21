@@ -11,11 +11,13 @@ niri xwayland-satellite xdg-desktop-portal-gtk wl-clipboard wlsunset mate-polkit
 greetd greetd-selinux qt6-qtwayland adw-gtk3-theme network-manager-applet neovim \
 imv caja atril mousepad engrampa paperwork dnf-plugins-core
 
-dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo
+
 dnf -y copr enable avengemedia/dms
 dnf -y copr enable avengemedia/danklinux
-dnf install -y quickshell matugen cliphist dms dms-greeter material-symbols-fonts \
-x264 x265 rar ffmpeg libvpx libdvdcss
+dnf install -y quickshell matugen cliphist dms dms-greeter material-symbols-fonts
+
+#dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo
+#dnf -y install x264 x265 rar ffmpeg libvpx libdvdcss
 
 systemctl enable --now greetd
 
