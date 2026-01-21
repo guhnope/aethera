@@ -1,7 +1,7 @@
 FROM scratch AS ctx
 COPY build_files /
 
-FROM  ghcr.io/ublue-os/base-main:43
+FROM  quay.io/fedora/fedora-bootc:43
 COPY system_files /
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
