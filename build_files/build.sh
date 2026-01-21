@@ -9,8 +9,8 @@ nano nano-default-editor
 dnf install --setopt=install_weak_deps=False -y fish grim slurp mako alacritty  \
 niri xwayland-satellite xdg-desktop-portal-gtk wl-clipboard wlsunset mate-polkit \
 greetd greetd-selinux qt6-qtwayland adw-gtk3-theme network-manager-applet neovim \
-imv caja atril mousepad engrampa paperwork dnf5-plugins
-
+imv caja atril mousepad engrampa paperwork dnf5-plugins firewalld NetworkManager-wifi \
+NetworkManager-bluetooth NetworkManager-openvpn NetworkManager-openvpn-gnome
 
 dnf -y copr enable avengemedia/dms
 dnf -y copr enable avengemedia/danklinux
