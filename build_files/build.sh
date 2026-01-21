@@ -9,7 +9,8 @@ tcpdump symlinks appstream cups bluez zip unzip wget2 bluez-cups dnf5-plugins \
 firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn \
 NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd \
 sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles \
-system-config-printer-udev system-config-printer-libs 
+system-config-printer-udev system-config-printer-libs dhcp-client \ 
+flatpak flatpak-selinux
 
 dnf -y copr enable avengemedia/dms
 dnf -y copr enable avengemedia/danklinux
@@ -18,7 +19,7 @@ dnf install  --setopt=install_weak_deps=False -y quickshell matugen cliphist \
 dms dms-greeter material-symbols-fonts niri xwayland-satellite xdg-desktop-portal-gtk  \
 fish grim slurp mako alacritty wl-clipboard wlsunset mate-polkit qt6-qtwayland adw-gtk3-theme \
 x264 x265 rar ffmpeg libvpx libdvdcss gstreamer1-plugins-good gstreamer1-plugins-bad-free \
-imv caja atril mousepad engrampa paperwork network-manager-applet
+imv caja atril mousepad engrampa paperwork network-manager-applet ImageMagick
 
 systemctl enable --now greetd
 systemctl enable --now firewalld
