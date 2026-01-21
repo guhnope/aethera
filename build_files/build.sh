@@ -11,7 +11,7 @@ niri xwayland-satellite xdg-desktop-portal-gtk wl-clipboard wlsunset mate-polkit
 greetd greetd-selinux qt6-qtwayland adw-gtk3-theme network-manager-applet neovim \
 imv caja atril mousepad engrampa paperwork dnf5-plugins firewalld NetworkManager-wifi \
 NetworkManager-bluetooth NetworkManager-openvpn NetworkManager-openvpn-gnome \ 
-sane-backends sane-backends-drivers-cameras sane-backends-drivers-scanners rsync \ 
+sane-backends-drivers-cameras sane-backends-drivers-scanners rsync \ 
 rootfiles system-config-printer-udev system-config-printer-libs systemd-networkd \
 distrobox cups buildah bluez-cups appstream open264 openvpn wget2 zip unzip \
 tcpdump symlinks systemd-container
