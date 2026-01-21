@@ -5,16 +5,17 @@ set -ouex pipefail
 
 dnf remove -y vim-minimal vim-enhanced firefox firefox-langpacks gnome-keyring \
 nano nano-default-editor 
-dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo
+
 dnf install --setopt=install_weak_deps=False -y fish grim slurp mako alacritty  \
 niri xwayland-satellite xdg-desktop-portal-gtk wl-clipboard wlsunset mate-polkit \
 greetd greetd-selinux qt6-qtwayland adw-gtk3-theme network-manager-applet neovim \
-ffmpeg libvpx libdvdcss imv caja atril mousepad engrampa paperwork x264 x265 rar \
-dnf-plugins-core
+imv caja atril mousepad engrampa paperwork dnf-plugins-core
 
+dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo
 dnf -y copr enable avengemedia/dms
 dnf -y copr enable avengemedia/danklinux
-dnf install -y quickshell matugen cliphist dms dms-greeter material-symbols-fonts
+dnf install -y quickshell matugen cliphist dms dms-greeter material-symbols-fonts \
+x264 x265 rar ffmpeg libvpx libdvdcss
 
 systemctl enable --now greetd
 
