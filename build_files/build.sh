@@ -1,18 +1,15 @@
 #!/bin/bash
-
 set -ouex pipefail
-
 
 dnf remove -y vim-minimal vim-enhanced firefox firefox-langpacks gnome-keyring \
 nano nano-default-editor 
 
-dnf install --setopt=install_weak_deps=False -y  \
-greetd greetd-selinux neovim tcpdump symlinks appstream cups \
-dnf5-plugins firewalld NetworkManager-wifi zip unzip \
-NetworkManager-bluetooth NetworkManager-openvpn NetworkManager-openvpn-gnome 
-#cups bluez-cups appstream open264 openvpn wget2 rsync
-#sane-backends-drivers-cameras sane-backends-drivers-scanners systemd-container
-#rootfiles system-config-printer-udev system-config-printer-libs systemd-networkd
+dnf install --setopt=install_weak_deps=False -y greetd greetd-selinux neovim\
+tcpdump symlinks appstream cups bluez zip unzip wget2 bluez-cups dnf5-plugins \
+firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn \
+NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd \
+sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles \
+system-config-printer-udev system-config-printer-libs 
 
 dnf -y copr enable avengemedia/dms
 dnf -y copr enable avengemedia/danklinux
