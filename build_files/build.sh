@@ -4,8 +4,8 @@ set -ouex pipefail
 dnf remove -y vim-minimal vim-enhanced firefox firefox-langpacks gnome-keyring \
 nano nano-default-editor 
 
-dnf install --setopt=install_weak_deps=False -y greetd greetd-selinux neovim\
-tcpdump symlinks appstream cups bluez zip unzip wget2 bluez-cups dnf5-plugins \
+dnf install --setopt=install_weak_deps=False -y greetd greetd-selinux  \
+tcpdump symlinks appstream cups zip unzip wget2 bluez-cups dnf5-plugins \
 firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn \
 NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd \
 sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles \
