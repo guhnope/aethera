@@ -7,7 +7,7 @@ nano nano-default-editor
 dnf install --setopt=install_weak_deps=False -y greetd greetd-selinux  \
 tcpdump symlinks appstream cups zip unzip wget2 bluez-cups dnf5-plugins \
 alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-gstreamer \
-pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit\
+pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit \
 firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn \
 NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd \
 sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles \
