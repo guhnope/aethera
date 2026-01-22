@@ -4,7 +4,7 @@ set -ouex pipefail
 dnf remove -y vim-minimal vim-enhanced firefox firefox-langpacks gnome-keyring \
 nano nano-default-editor 
 
-dnf install --setopt=install_weak_deps=False -y greetd greetd-selinux  \
+dnf install -y greetd greetd-selinux  \
 tcpdump symlinks appstream cups zip unzip wget2 bluez-cups dnf5-plugins \
 alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-gstreamer \
 pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit \
@@ -17,13 +17,17 @@ dnf -y copr enable avengemedia/dms
 dnf -y copr enable avengemedia/danklinux
 dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo
 dnf install  --setopt=install_weak_deps=False -y quickshell matugen cliphist \
-dms dms-greeter material-symbols-fonts niri xwayland-satellite xdg-desktop-portal-gtk  \
-fish grim slurp mako alacritty wl-clipboard wlsunset mate-polkit qt6-qtwayland adw-gtk3-theme \
+dms dms-greeter material-symbols-fonts niri x  \
+wl-clipboard wlsunset  qt6-qtwayland adw-gtk3-theme \
 x264 x265 rar ffmpeg libvpx libdvdcss gstreamer1-plugins-good gstreamer1-plugins-bad-free \
-imv caja atril mousepad engrampa paperwork network-manager-applet ImageMagick flatpak flatpak-selinux
+imv caja atril mousepad engrampa paperwork network-manager-applet 
 
 systemctl enable --now greetd
 systemctl enable --now firewalld
+
+rm -rf /usr/share/doc/niri
+rm -rf /usr/share/licenses/niri
+rm -rf /usr/share/doc/just
 
 dnf clean all
 rm -rf /var/tmp/dnf/cache/
