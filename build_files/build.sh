@@ -4,7 +4,7 @@ set -ouex pipefail
 dnf remove -y vim-minimal vim-enhanced firefox firefox-langpacks gnome-keyring \
 nano nano-default-editor 
 
-dnf install --setopt=install_weak_deps=False -y greetd greetd-selinux  \
+dnf install -y greetd greetd-selinux  \
 tcpdump symlinks appstream cups zip unzip wget2 bluez-cups dnf5-plugins \
 alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-gstreamer \
 pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit \
@@ -24,6 +24,10 @@ imv caja atril mousepad engrampa paperwork network-manager-applet ImageMagick fl
 
 systemctl enable --now greetd
 systemctl enable --now firewalld
+
+rm -rf /usr/share/doc/niri
+rm -rf /usr/share/licenses/niri
+rm -rf /usr/share/doc/just
 
 dnf clean all
 rm -rf /var/tmp/dnf/cache/
