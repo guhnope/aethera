@@ -1,8 +1,8 @@
 #!/bin/bash
 set -ouex pipefail
 
-dnf remove -y vim-minimal vim-enhanced firefox firefox-langpacks gnome-keyring \
-nano nano-default-editor 
+dnf remove -y vim-minimal vim-enhanced firefox firefox-langpacks gnome-keyring nano \
+nano-default-editor
 
 dnf install -y greetd greetd-selinux  \
 kernel-modules-extra tcpdump symlinks appstream cups zip unzip wget2 bluez-cups dnf5-plugins \
@@ -26,7 +26,6 @@ systemctl enable --now firewalld
 
 rm -rf /usr/share/doc/niri
 rm -rf /usr/share/licenses/niri
-rm -rf /usr/share/doc/just
 
 dnf clean all
 rm -rf /var/tmp/dnf/cache/
