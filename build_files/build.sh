@@ -11,7 +11,7 @@ pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-
 firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn libva-intel-media-driver \
 NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd fish ImageMagick \
 sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles dhcp-client \
-system-config-printer-udev system-config-printer-libs intel-vaapi-driver iwlwifi-mld-firmware
+system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware
 
 dnf -y copr enable avengemedia/dms
 dnf -y copr enable avengemedia/danklinux
