@@ -19,13 +19,12 @@ dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-m
 dnf install  --setopt=install_weak_deps=False -y quickshell matugen cliphist network-manager-applet \
 dms dms-greeter material-symbols-fonts niri xwayland-satellite xdg-desktop-portal-gtk rar libdvdcss \
 grim slurp mako alacritty wl-clipboard wlsunset mate-polkit qt6-qtwayland adw-gtk3-theme x264 x265 \
-ffmpeg gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril mousepad engrampa paperwork   
+ffmpeg gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril mousepad engrampa paperwork
 
 systemctl enable --now greetd
 systemctl enable --now firewalld
 
-rm -rf /usr/share/doc/niri
-#rm -rf /usr/share/licenses/niri
+#rm -rf /usr/share/doc/niri
 
 dnf clean all
 rm -rf /var/tmp/dnf/cache/
