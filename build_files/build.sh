@@ -25,7 +25,7 @@ ffmpeg gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril mousep
 systemctl enable --now greetd
 systemctl enable --now firewalld
 
-#rm -rf /usr/share/doc/niri/wiki/Layer‐Shell-Components.md
+mv /usr/share/doc/niri/wiki/Layer‐Shell-Components.md /usr/share/doc/niri/wiki/Layer-Shell-Components.md
 
 dnf clean all
 rm -rf /var/tmp/dnf/cache/
