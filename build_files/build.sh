@@ -24,7 +24,7 @@ ffmpeg gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril mousep
 systemctl enable --now greetd
 systemctl enable --now firewalld
 
-#rm -rf /usr/share/doc/niri
+rm -rf /usr/share/doc/niri/wiki
 
 dnf clean all
 rm -rf /var/tmp/dnf/cache/
