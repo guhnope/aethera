@@ -15,6 +15,7 @@ system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwi
 
 dnf -y copr enable avengemedia/dms
 dnf -y copr enable avengemedia/danklinux
+dnf -y copr enable yalter/niri
 dnf config-manager addrepo --from-repofile=https://negativo17.org/repos/fedora-multimedia.repo
 dnf install  --setopt=install_weak_deps=False -y quickshell matugen cliphist network-manager-applet \
 dms dms-greeter material-symbols-fonts niri xwayland-satellite xdg-desktop-portal-gtk rar libdvdcss \
