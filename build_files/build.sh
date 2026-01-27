@@ -25,7 +25,7 @@ systemctl enable --now greetd
 systemctl enable --now firewalld
 
 rm -rf /usr/share/doc/niri
-rm -rf /usr/share/licenses/niri
+#rm -rf /usr/share/licenses/niri
 
 dnf clean all
 rm -rf /var/tmp/dnf/cache/
