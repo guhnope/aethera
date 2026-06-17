@@ -15,21 +15,21 @@ NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd fish Ima
 sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles dhcp-client \
 system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwifi-mvm-firmware
 
-# Instal
-#
-
-# 3. Pull down the official Terra repository file directly
-wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
-
-# 4. Enable the Terra subrepositories using modern DNF5 syntax
+# Install desktop apps
 dnf install --setopt=install_weak_deps=False -y neovim noctalia-git noctalia-greeter \
 material-symbols-fonts niri xwayland-satellite xdg-desktop-portal-gtk matugen cliphist \
 qt6-qtwayland adw-gtk3-theme gstreamer1-plugins-good gstreamer1-plugins-bad-free \
 wl-clipboard wlsunset grim slurp mako ghostty ffmpeg imv caja atril mousepad engrampa paperwork \
-terra-release-multimedia
 
-# 5. Now that the multimedia repo is active on disk, install the restricted codecs
-dnf install --setopt=install_weak_deps=False -y rar libdvdcss x264 x265 gamescope protontricks heroic-games-launcher-bin
+wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
+
+dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm \
+               https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
+
+dnf install --setopt=install_weak_deps=False -y neovim noctalia-git noctalia-greeter \
+terra-release-multimedia gamescope protontricks heroic-games-launcher-bin steam proton-plus
+
+dnf install --setopt=install_weak_deps=False -y rar libdvdcss x264 x265
 
 # 6. Create the system-wide symbolic links for vi and vim targeting neovim
 ln -sf /usr/bin/nvim /usr/bin/vi
