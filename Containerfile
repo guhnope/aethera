@@ -2,7 +2,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 FROM  quay.io/fedora/fedora-sway-atomic:44
-COPY system_files /
+
 
 RUN dnf remove -y \
 vim-minimal vim-enhanced \
@@ -22,6 +22,12 @@ pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-
 NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd fish ImageMagick \
 sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles dhcp-client \
 system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwifi-mvm-firmware
+
+RUN dnf install --setopt=install_weak_deps=False -y neovim ffmpeg \
+niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
+gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril mousepad engrampa paperwork
+
+COPY system_files /
 
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \

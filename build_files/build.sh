@@ -2,40 +2,26 @@
 set -ouex pipefail
 
 # =====================================================================
-# 1. CLEAN OUT DEFAULT PACKAGES
-# =====================================================================
-
-
-# =====================================================================
-# 2. BASE SYSTEM RUNTIMES (CORE REPO LAYER)
-# =====================================================================
-
-
-# =====================================================================
-# 3. CORE DESKTOP UTILITIES (CORE REPO LAYER)
-# =====================================================================
-
-# =====================================================================
-# 4. EXTERNAL REPOSITORY INITIALIZATION (TERRA & RPM FUSION)
+# 1. EXTERNAL REPOSITORY INITIALIZATION (TERRA & RPM FUSION)
 # =====================================================================
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm \
                https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
 
 # =====================================================================
-# 5. SPECIALIZED TOOLKIT & NATIVE GAMING LAYER (TERRA & NONFREE)
+# 2. SPECIALIZED TOOLKIT & NATIVE GAMING LAYER (TERRA & NONFREE)
 # =====================================================================
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia-git noctalia-greeter \
 terra-release-multimedia terra-release-extras steam protonplus
 
 # =====================================================================
-# 6. FROM TERRA SUBREPOS LAYER
+# 3. FROM TERRA SUBREPOS LAYER
 # =====================================================================
 dnf install --setopt=install_weak_deps=False -y x264 x265 mjpegtools xevd  \
 terra-gamescope terra-protontricks terra-wine-dxvk unrar
 
 # =====================================================================
-# 7. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
+# 4. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
 # =====================================================================
 # Create core target paths for declarative remote setups
 mkdir -p /etc/flatpak/remotes.d
@@ -102,7 +88,7 @@ GTK_THEME=adw-gtk3
 EOF
 
 # =====================================================================
-# 8. SYSTEM CONFIGURATIONS & COMPANION WORKAROUNDS
+# 5. SYSTEM CONFIGURATIONS & COMPANION WORKAROUNDS
 # =====================================================================
 ln -sf /usr/bin/nvim /usr/bin/vi
 ln -sf /usr/bin/nvim /usr/bin/vim
@@ -114,9 +100,11 @@ if [ -f /usr/share/doc/niri/wiki/Layer‐Shell-Components.md ]; then
     mv /usr/share/doc/niri/wiki/Layer‐Shell-Components.md /usr/share/doc/niri/wiki/Layer-Shell-Components.md
 fi
 
-# =====================================================================
-# 9. COMPILING STORAGE CLEANUPS
-# =====================================================================
+# Fix security contexts for files created during the build
+restorecon -Rv /etc/systemd/system
+restorecon -Rv /etc/flatpak
+restorecon -Rv /usr/local/bin
+
 dnf clean all
 rm -rf /var/cache/libdnf5/ /var/tmp/dnf/
 ostree container commit
