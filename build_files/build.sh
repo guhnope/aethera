@@ -18,8 +18,8 @@ system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwi
 # Install desktop apps
 dnf install --setopt=install_weak_deps=False -y neovim noctalia-git noctalia-greeter \
 material-symbols-fonts niri xwayland-satellite xdg-desktop-portal-gtk matugen cliphist \
-qt6-qtwayland adw-gtk3-theme gstreamer1-plugins-good gstreamer1-plugins-bad-free \
-wl-clipboard wlsunset grim slurp mako ghostty ffmpeg imv caja atril mousepad engrampa paperwork \
+adw-gtk3-theme gstreamer1-plugins-good gstreamer1-plugins-bad-free wl-clipboard wlsunset \
+grim slurp mako ghostty ffmpeg imv caja atril mousepad engrampa paperwork \
 
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 
