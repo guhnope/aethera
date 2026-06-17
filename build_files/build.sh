@@ -77,7 +77,6 @@ Branch=stable
 
 [Flatpak Preinstall md.obsidian.Obsidian]
 Branch=stable
-EOF
 
 [Flatpak Preinstall dev.zed.Zed]
 Branch=stable
