@@ -8,7 +8,9 @@ wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos
 dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm \
                https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
 mkdir -p /etc/pki/rpm-gpg/
-wget2 -O /etc/pki/rpm-gpg/RPM-GPG-KEY-terra44-multimedia https://github.com/terrapkg/subatomic-repos/raw/main/GPG-KEY-terra44
+wget2 -O /etc/pki/rpm-gpg/RPM-GPG-KEY-terra44-multimedia https://repos.fyralabs.com/terra44-multimedia/key.asc
+wget2 -O /etc/pki/rpm-gpg/RPM-GPG-KEY-terra44 https://repos.fyralabs.com/terra44/key.asc
+
 # =====================================================================
 # 2. SPECIALIZED TOOLKIT & NATIVE GAMING LAYER (TERRA & NONFREE)
 # =====================================================================
