@@ -1,0 +1,24 @@
+# 1. Build using native podman (more transparent than third-party actions)
+- name: Build Image
+  run: |
+    podman build -t ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
+    podman tag ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+# 2. Login using standard GitHub Actions (OIDC aware)
+- name: Login to GitHub Container Registry
+  uses: docker/login-action@v3
+  with:
+    registry: ghcr.io
+    username: ${{ github.actor }}
+    password: ${{ secrets.GITHUB_TOKEN }}
+
+# 3. Push the image
+- name: Push to GHCR
+  run: |
+    podman push ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+    podman push ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+
+# 4. Keyless Signing (The 2026 Standard)
+- name: Sign container image with Sigstore
+  run: |
+    cosign sign --yes ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}@${{ steps.build_image.outputs.digest }}
