@@ -42,7 +42,7 @@ terra-release-multimedia gamescope protontricks steam
 # =====================================================================
 # 6. RESTRICTED CODES LAYER
 # =====================================================================
-dnf install --setopt=install_weak_deps=False -y rar libdvdcss x264 x265
+dnf install --setopt=install_weak_deps=False -y x264 x265
 
 # =====================================================================
 # 7. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
