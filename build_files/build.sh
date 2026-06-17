@@ -37,7 +37,7 @@ dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-
 # 5. SPECIALIZED TOOLKIT & NATIVE GAMING LAYER (TERRA & NONFREE)
 # =====================================================================
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia-git noctalia-greeter \
-terra-release-multimedia gamescope protontricks heroic-games-launcher-bin steam proton-plus
+terra-release-multimedia gamescope protontricks steam
 
 # =====================================================================
 # 6. RESTRICTED CODES LAYER
