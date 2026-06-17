@@ -42,7 +42,7 @@ terra-release-multimedia terra-release-extras steam protonplus
 # =====================================================================
 # 6. FROM TERRA SUBREPOS LAYER
 # =====================================================================
-dnf install --setopt=install_weak_deps=False -y x264 x265 mjpegtools xevd libavcodec \
+dnf install --setopt=install_weak_deps=False -y x264 x265 mjpegtools xevd  \
 terra-gamescope terra-protontricks terra-wine-dxvk unrar
 
 # =====================================================================
