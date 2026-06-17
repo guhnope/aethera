@@ -19,13 +19,14 @@ system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwi
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 
 # 4. Enable the Terra subrepositories using modern DNF5 syntax
-dnf config-manager setopt terra-multimedia.enabled=1
-
-# 5. Install your desktop environment stack (including Neovim, Noctalia, and Ghostty)
 dnf install --setopt=install_weak_deps=False -y neovim noctalia-git noctalia-greeter \
-material-symbols-fonts niri xwayland-satellite xdg-desktop-portal-gtk matugen rar libdvdcss cliphist \
-grim slurp mako ghostty wl-clipboard wlsunset mate-polkit qt6-qtwayland adw-gtk3-theme x264 x265 \
-ffmpeg gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril mousepad engrampa paperwork
+material-symbols-fonts niri xwayland-satellite xdg-desktop-portal-gtk matugen cliphist \
+qt6-qtwayland adw-gtk3-theme gstreamer1-plugins-good gstreamer1-plugins-bad-free\
+wl-clipboard wlsunsetgrim slurp mako ghostty ffmpeg imv caja atril mousepad engrampa paperwork \
+terra-release-multimedia helium-browser-bin
+
+# 5. Now that the multimedia repo is active on disk, install the restricted codecs
+dnf install --setopt=install_weak_deps=False -y rar libdvdcss x264 x265
 
 # 6. Create the system-wide symbolic links for vi and vim targeting neovim
 ln -sf /usr/bin/nvim /usr/bin/vi
