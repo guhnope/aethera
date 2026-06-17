@@ -10,7 +10,7 @@ nano-default-editor
 # =====================================================================
 # 2. BASE SYSTEM RUNTIMES (CORE REPO LAYER)
 # =====================================================================
-dnf install -y greetd greetd-selinux \
+dnf install -y greetd cage greetd-selinux \
 kernel-modules-extra tcpdump symlinks appstream cups zip unzip wget2 bluez-cups dnf5-plugins \
 alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-gstreamer flatpak flatpak-selinux \
 pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit dhcp-client \
