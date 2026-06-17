@@ -16,17 +16,16 @@ sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles dhcp-clie
 system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwifi-mvm-firmware
 
 # Install desktop apps
-dnf install --setopt=install_weak_deps=False -y neovim noctalia-git noctalia-greeter \
-material-symbols-fonts niri xwayland-satellite xdg-desktop-portal-gtk matugen cliphist \
-adw-gtk3-theme gstreamer1-plugins-good gstreamer1-plugins-bad-free wl-clipboard wlsunset \
-grim slurp mako ghostty ffmpeg imv caja atril mousepad engrampa paperwork \
+dnf install --setopt=install_weak_deps=False -y neovim material-symbols-fonts ffmpeg \
+niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme  \
+gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril mousepad engrampa paperwork
+
 
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
-
 dnf install -y https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm \
                https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
 
-dnf install --setopt=install_weak_deps=False -y neovim noctalia-git noctalia-greeter \
+dnf install --setopt=install_weak_deps=False -y ghostty noctalia-git noctalia-greeter \
 terra-release-multimedia gamescope protontricks heroic-games-launcher-bin steam proton-plus
 
 dnf install --setopt=install_weak_deps=False -y rar libdvdcss x264 x265
