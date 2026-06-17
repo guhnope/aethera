@@ -4,27 +4,16 @@ set -ouex pipefail
 # =====================================================================
 # 1. CLEAN OUT DEFAULT PACKAGES
 # =====================================================================
-dnf remove -y vim-minimal vim-enhanced firefox firefox-langpacks gnome-keyring nano \
-nano-default-editor
+
 
 # =====================================================================
 # 2. BASE SYSTEM RUNTIMES (CORE REPO LAYER)
 # =====================================================================
-dnf install -y greetd cage greetd-selinux flatpak flatpak-selinux dnf5-plugins \
-kernel-modules-extra firewalld tcpdump symlinks appstream cups bluez-cups wget2 \
-alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-gstreamer  zip unzip  \
-pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit \
- NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn libva-intel-media-driver \
-NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd fish ImageMagick \
-sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles dhcp-client \
-system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwifi-mvm-firmware
+
 
 # =====================================================================
 # 3. CORE DESKTOP UTILITIES (CORE REPO LAYER)
 # =====================================================================
-dnf install --setopt=install_weak_deps=False -y neovim ffmpeg \
-niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
-gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril mousepad engrampa paperwork
 
 # =====================================================================
 # 4. EXTERNAL REPOSITORY INITIALIZATION (TERRA & RPM FUSION)
