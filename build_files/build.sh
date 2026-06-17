@@ -16,8 +16,7 @@ system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwi
 ln -sf /usr/bin/nvim /usr/bin/vi
 ln -sf /usr/bin/nvim /usr/bin/vim
 
-dnf install -y --nogpgcheck --repofrompath "terra,https://repos.fyralabs.com/terra/\$releasever" terra-release
-dnf config-manager --set-enabled terra-multimedia
+wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repodnf config-manager --set-enabled terra-multimedia
 
 dnf install --setopt=install_weak_deps=False -y noctalia-git noctalia-greeter \
 material-symbols-fonts niri xwayland-satellite xdg-desktop-portal-gtk matugen rar libdvdcss cliphist \
