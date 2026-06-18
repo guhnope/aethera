@@ -127,4 +127,3 @@ layer-rule {
   match namespace="^noctalia-overview*"
   place-within-backdrop true
 }
-include "./noctalia.kdl"
