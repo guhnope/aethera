@@ -128,5 +128,4 @@ fi
 # =====================================================================
 dnf clean all
 rm -rf /var/cache/libdnf5/ /var/tmp/dnf/
-ostree container commit
 rm -rf /tmp/*
