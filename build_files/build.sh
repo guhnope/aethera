@@ -20,7 +20,7 @@ sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles dhcp-clie
 system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwifi-mvm-firmware
 
 # =====================================================================
-# 3. CORE DESKTOP UTILITIES (CORE REPO LAYER)
+# 3. CORE REPO PACKAGES (NO WEAKDEPS)
 # =====================================================================
 dnf install --setopt=install_weak_deps=False -y neovim  \
 niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
@@ -31,9 +31,9 @@ gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril engrampa pape
 # =====================================================================
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 dnf install -y terra-release-multimedia terra-release-extras
-dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
- steam protonplus ffmpeg x264 x265 xevd zed \
- terra-gamescope terra-protontricks terra-wine-dxvk unrar helium-browser-bin
+dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter zed helium-browser-bin
+#dnf install -y  ffmpeg x264 x265 xevd
+#dnf install -y steam protonplus terra-gamescope terra-protontricks terra-wine-dxvk unrar
 
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
