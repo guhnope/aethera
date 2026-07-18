@@ -1,64 +1,155 @@
----
 name: Build bootc image
+
 on:
-  pull_request:
-    branches:
-      - main
   push:
     branches:
       - main
     paths-ignore:
       - "**/README.md"
+
+  pull_request:
+    branches:
+      - main
+
   workflow_dispatch:
 
 env:
-  IMAGE_DESC: "Aethera, an Atomic desktop featuring Niri"
-  IMAGE_KEYWORDS: "bootc,fedora,atomic"
-  IMAGE_LOGO_URL: "https://avatars.githubusercontent.com/u/120078124?s=200&v=4"
-  IMAGE_NAME: "${{ github.event.repository.name }}"
-  IMAGE_REGISTRY: "ghcr.io/${{ github.repository_owner }}"
-  DEFAULT_TAG: "latest"
+  IMAGE_NAME: ${{ github.event.repository.name }}
+  IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+  DEFAULT_TAG: latest
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref || github.run_id }}
+  group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build_push:
-    name: Build and push image
+  build:
+    name: Build bootc image
     runs-on: ubuntu-24.04
+
     permissions:
       contents: read
       packages: write
-      id-token: write # Required for Keyless Signing
+      id-token: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Build Image
-        id: build_image
+      - name: Normalize image name
         run: |
-          podman build -t ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} .
-          podman tag ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}
+          echo "IMAGE_NAME=${IMAGE_NAME,,}" >> $GITHUB_ENV
+          echo "IMAGE_REGISTRY=${IMAGE_REGISTRY,,}" >> $GITHUB_ENV
 
-      - name: Login to GitHub Container Registry
+      ####################################################################
+      # Free GitHub runner disk space
+      ####################################################################
+
+      - name: Free runner disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet
+          sudo rm -rf /usr/local/lib/android
+          sudo rm -rf /opt/ghc
+          sudo rm -rf /opt/hostedtoolcache/CodeQL
+
+          docker system prune -af || true
+          podman system prune -af || true
+
+          echo "Disk after cleanup"
+          df -h
+
+      ####################################################################
+      # Put Podman storage on BTRFS
+      ####################################################################
+
+      - name: Configure container storage
+        uses: ublue-os/container-storage-action@v2
+        with:
+          target-dir: /var/lib/containers
+          mount-opts: compress-force=zstd:2
+
+      ####################################################################
+      # Diagnostics
+      ####################################################################
+
+      - name: Show storage
+        run: |
+          echo "Filesystem"
+          df -h
+
+          echo
+          echo "Podman storage"
+          podman system df || true
+
+      ####################################################################
+      # Build
+      ####################################################################
+
+      - name: Build image
+        run: |
+          podman build \
+            -t ${IMAGE_REGISTRY}/${IMAGE_NAME}:${GITHUB_SHA} \
+            .
+
+          podman tag \
+            ${IMAGE_REGISTRY}/${IMAGE_NAME}:${GITHUB_SHA} \
+            ${IMAGE_REGISTRY}/${IMAGE_NAME}:${DEFAULT_TAG}
+
+      - name: Image information
+        run: |
+          podman images
+          podman inspect ${IMAGE_REGISTRY}/${IMAGE_NAME}:${GITHUB_SHA}
+
+      ####################################################################
+      # Login
+      ####################################################################
+
+      - name: Login to GHCR
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Push to GHCR
+      ####################################################################
+      # Push
+      ####################################################################
+
+      - name: Push images
+        if: github.event_name != 'pull_request'
         run: |
-          podman push ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          podman push ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.DEFAULT_TAG }}
+          podman push ${IMAGE_REGISTRY}/${IMAGE_NAME}:${GITHUB_SHA}
+          podman push ${IMAGE_REGISTRY}/${IMAGE_NAME}:${DEFAULT_TAG}
+
+      ####################################################################
+      # Install Cosign
+      ####################################################################
 
       - name: Install Cosign
-        uses: sigstore/cosign-installer@v3.8.1
+        if: github.event_name != 'pull_request'
+        uses: sigstore/cosign-installer@v3
 
-      - name: Sign container image with Sigstore
+      ####################################################################
+      # Keyless signing
+      ####################################################################
+
+      - name: Sign image
+        if: github.event_name != 'pull_request'
+        env:
+          COSIGN_EXPERIMENTAL: "1"
         run: |
-          # Use the digest for immutable, keyless signing
-          IMAGE_DIGEST=$(podman inspect ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }} --format '{{.Digest}}')
-          cosign sign --yes ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}@${IMAGE_DIGEST}
+          DIGEST=$(skopeo inspect docker://${IMAGE_REGISTRY}/${IMAGE_NAME}:${DEFAULT_TAG} | jq -r .Digest)
+
+          cosign sign \
+            --yes \
+            ${IMAGE_REGISTRY}/${IMAGE_NAME}@${DIGEST}
+
+      ####################################################################
+      # Final diagnostics
+      ####################################################################
+
+      - name: Final disk usage
+        if: always()
+        run: |
+          df -h
+          podman system df || true
