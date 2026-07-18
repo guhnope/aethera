@@ -42,8 +42,9 @@ terra-release-multimedia terra-release-extras steam protonplus
 # =====================================================================
 # 6. FROM TERRA SUBREPOS LAYER
 # =====================================================================
-dnf install --setopt=install_weak_deps=False -y x264 x265 mjpegtools xevd  \
-terra-gamescope terra-protontricks terra-wine-dxvk unrar
+dnf install --setopt=install_weak_deps=False -y x264 x265 mjpegtools xevd zed \
+terra-gamescope terra-protontricks terra-wine-dxvk unrar helium-browser-bin
+
 
 # =====================================================================
 # 7. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
@@ -64,9 +65,6 @@ EOF
 # B. Declare baseline user applications using Flatpak's native system preinstall schema
 cat << 'EOF' > /etc/flatpak/preinstall.d/aethera-apps.preinstall
 [Flatpak Preinstall io.github.aerogem.Bazaar]
-Branch=stable
-
-[Flatpak Preinstall com.github.helium_browser.Helium]
 Branch=stable
 
 [Flatpak Preinstall com.spotify.Client]
