@@ -33,9 +33,9 @@ wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos
 dnf install -y terra-release-multimedia terra-release-extras
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
 unrar zed helium-browser-bin
-#dnf install -y  ffmpeg x264 x265 xevd
-dnf install -y steam protonplus terra-gamescope terra-protontricks terra-wine-dxvk \
-vulkan-loader mesa-libEGL vulkan-tools vkBasalt gamemode heroic-games-launcher
+#dnf install -y  ffmpeg x264 x265 xevd protonplus terra-protontricks terra-wine-dxvk \
+# vulkan-loader mesa-libEGL vulkan-tools vkBasalt
+dnf install -y steam  terra-gamescope gamemode heroic-games-launcher
 
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
