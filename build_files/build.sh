@@ -31,9 +31,11 @@ gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril engrampa pape
 # =====================================================================
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 dnf install -y terra-release-multimedia terra-release-extras
-dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter zed helium-browser-bin
+dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
+unrar zed helium-browser-bin
 #dnf install -y  ffmpeg x264 x265 xevd
-#dnf install -y steam protonplus terra-gamescope terra-protontricks terra-wine-dxvk unrar
+dnf install -y steam protonplus terra-gamescope terra-protontricks terra-wine-dxvk \
+vulkan-loader mesa-libEGL vulkan-tools vkBasalt gamemode heroic-games-launcher
 
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
