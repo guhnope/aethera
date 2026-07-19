@@ -12,7 +12,7 @@ nano-default-editor
 # =====================================================================
 dnf install -y greetd greetd-selinux \
 kernel-modules-extra tcpdump symlinks appstream cups zip unzip wget2 bluez-cups dnf5-plugins \
-alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-gstreamer flatpak flatpak-selinux \
+alsa-firmware alsa-tools-firmware alsa-utils pipewire flatpak flatpak-selinux \
 pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit dhcp-client \
 firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn libva-intel-media-driver \
 NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd fish ImageMagick \
@@ -24,7 +24,7 @@ system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwi
 # =====================================================================
 dnf install --setopt=install_weak_deps=False -y neovim  \
 niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
-gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril engrampa paperwork gamescope gamemode
+pipewire-gstreamer gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril engrampa paperwork gamescope gamemode
 
 # =====================================================================
 # 4. EXTERNAL REPOSITORY (TERRA)
@@ -32,10 +32,8 @@ gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril engrampa pape
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 dnf install -y terra-release-multimedia terra-release-extras
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
-unrar zed helium-browser-bin
-#dnf install -y steam ffmpeg x264 x265 xevd protonplus terra-protontricks terra-wine-dxvk \
-# vulkan-loader mesa-libEGL vulkan-tools vkBasalt
-dnf install -y x264 x265 vulkan-loader mesa-libEGL vulkan-tools vkBasalt
+unrar zed helium-browser-bin  x264 x265 vulkan-loader mesa-libEGL vulkan-tools vkBasalt
+#dnf install -y steam ffmpeg xevd protonplus terra-protontricks terra-wine-dxvk
 
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
