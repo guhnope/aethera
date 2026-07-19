@@ -65,6 +65,7 @@ Branch=stable
 
 [Flatpak Preinstall md.obsidian.Obsidian]
 Branch=stable
+EOF
 
 # C. Generate first-boot systemd synchronization manager to run once the network goes online
 cat << 'EOF' > /etc/systemd/system/aethera-flatpak-sync.service
