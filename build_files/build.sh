@@ -22,19 +22,15 @@ cups bluez-cups kernel-modules-extra symlinks zip wget2 dnf5-plugins fish system
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 dnf install -y terra-release-multimedia terra-release-extras
 
-dnf install --setopt=install_weak_deps=False -y fdk-aac libavcodec libavdevice libavformat libavutil libswresample
-
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
-niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako  \
-alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-pulseaudio  \
-vkBasalt x264 x265 unrar\
-pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa pipewire-gstreamer \
-paperwork imv caja atril engrampa adw-gtk3-theme zed helium-browser-bin  \
-vulkan-loader mesa-libEGL vulkan-tools vesktop gamemode terra-gamescope \
-steam protonplus heroic-games-launcher
-
+niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako unrar \
+alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-pulseaudio pipewire-gstreamer \
+pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa  x264 x265 \
+paperwork imv caja atril engrampa adw-gtk3-theme zed helium-browser-bin vesktop
 #dnf install -y ffmpeg xevd NetworkManager-openvpn-gnome gstreamer1-plugins-good gstreamer1-plugins-bad-free
-
+#dnf install --setopt=install_weak_deps=False -y fdk-aac ffmpeg steam  heroic-games-launcher \
+#libavcodec libavdevice libavformat libavutil libswresample protonplus terra-gamescope
+# vulkan-loader mesa-libEGL vulkan-tools gamemode vkBasalt
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
 # =====================================================================
