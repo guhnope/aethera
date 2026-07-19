@@ -16,9 +16,12 @@ openvpn systemd-networkd tcpdump iwlwifi-mld-firmware iwlwifi-mvm-firmware libva
 system-config-printer-udev system-config-printer-libs sane-backends-drivers-cameras sane-backends-drivers-scanners \
 cups bluez-cups kernel-modules-extra symlinks zip wget2 dnf5-plugins fish systemd-container rootfiles \
 niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
-gstreamer1-plugins-good gstreamer1-plugins-bad-free paperwork imv caja atril engrampa \
-alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-pulseaudio \
-pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa pipewire-gstreamer
+paperwork imv caja atril engrampa
+
+echo "Audio packages"
+dnf -y install --setopt=install_weak_deps=False alsa-firmware alsa-tools-firmware \
+alsa-utils pipewire pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit\
+gstreamer1-plugins-good gstreamer1-plugins-bad-free pipewire-alsa pipewire-gstreamer
 
 # =====================================================================
 # 4. EXTERNAL REPOSITORY (TERRA)
