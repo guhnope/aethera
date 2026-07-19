@@ -18,7 +18,7 @@ cups bluez-cups kernel-modules-extra symlinks zip wget2 dnf5-plugins fish system
 alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-pulseaudio pipewire-gstreamer \
 pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa  \
 niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
-paperwork imv caja atril engrampa gamemode gamescope
+paperwork imv caja atril engrampa gamemode gamescope vulkan-tools vkBasalt
 
 # =====================================================================
 # 4. EXTERNAL REPOSITORY (RPMFUSION)
@@ -26,7 +26,7 @@ paperwork imv caja atril engrampa gamemode gamescope
 dnf install -y \
     https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm \
     https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
-dnf install -y ffmpeg ffmpegthumbnailer steam unrar x264 x265 vulkan-tools vkBasalt
+dnf install -y ffmpeg ffmpegthumbnailer steam unrar x264 x265
 
 
 # =====================================================================
@@ -35,7 +35,7 @@ dnf install -y ffmpeg ffmpegthumbnailer steam unrar x264 x265 vulkan-tools vkBas
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter  \
-zed helium-browser-bin vesktop protonplus heroic-games-launcher
+zed helium-browser-bin vesktop protonplus heroic-games-launche
 #
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
