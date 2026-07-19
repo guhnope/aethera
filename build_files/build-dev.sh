@@ -81,7 +81,6 @@ Branch=stable
 
 [Flatpak Preinstall dev.zed.Zed]
 Branch=stable
-
 EOF
 
 # E. Enforce system-wide uniform global flatpak override templates
