@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Qt6 Settings
+Comment=Change the behaviour and appearance of Qt apps
+Exec=/usr/bin/qt6ct
+Icon=system-file-manager
+Terminal=false
+Type=Application
+StartupNotify=true
+Categories=Qt;Settings;
+NoDisplay=true
+Keywords=appearance;windows;qt;

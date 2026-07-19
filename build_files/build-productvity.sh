@@ -13,12 +13,13 @@ nano-default-editor
 dnf install --setopt=install_weak_deps=False -y greetd greetd-selinux neovim  \
 dhcp-client firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn \
 openvpn systemd-networkd tcpdump iwlwifi-mld-firmware iwlwifi-mvm-firmware libva-intel-media-driver \
-system-config-printer-udev system-config-printer-libs sane-backends-drivers-cameras sane-backends-drivers-scanners \
-cups bluez-cups kernel-modules-extra symlinks zip wget2 dnf5-plugins fish systemd-container rootfiles \
+system-config-printer-udev system-config-printer-libs cups bluez-cups \
+sane-backends-drivers-cameras sane-backends-drivers-scanners \
+kernel-modules-extra symlinks zip wget2 dnf5-plugins fish systemd-container rootfiles \
 alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-pulseaudio pipewire-gstreamer \
-pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa  \
-niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
-paperwork imv caja atril engrampa gamemode gamescope vulkan-tools vkBasalt
+pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa \
+niri xwayland-satellite cliphist wl-clipboard wlsunset grim slurp mako  \
+adw-gtk3-theme qt6ct matugen imv caja atril engrampa
 
 # =====================================================================
 # 4. EXTERNAL REPOSITORY (RPMFUSION)
@@ -26,16 +27,14 @@ paperwork imv caja atril engrampa gamemode gamescope vulkan-tools vkBasalt
 dnf install -y \
     https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm \
     https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
-dnf install -y ffmpeg ffmpegthumbnailer steam unrar x264 x265
-
+    dnf install -y ffmpeg ffmpegthumbnailer unrar x264 x265
 
 # =====================================================================
 # 4. EXTERNAL REPOSITORY (TERRA)
 # =====================================================================
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 
-dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter  \
-zed helium-browser-bin vesktop protonplus heroic-games-launcher
+dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter
 #
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
@@ -56,7 +55,7 @@ EOF
 
 # B. Declare baseline user applications using Flatpak's native system preinstall schema
 cat << 'EOF' > /etc/flatpak/preinstall.d/aethera-apps.preinstall
-[Flatpak Preinstall io.github.aerogem.Bazaar]
+[Flatpak Preinstall io.github.kolunmi.Bazaar]
 Branch=stable
 
 [Flatpak Preinstall com.spotify.Client]
@@ -64,6 +63,25 @@ Branch=stable
 
 [Flatpak Preinstall md.obsidian.Obsidian]
 Branch=stable
+
+[Flatpak Preinstall dev.vencord.Vesktop]
+Branch=stable
+
+[Flatpak Preinstall org.fedoraproject.MediaWriter]
+Branch=stable
+
+[Flatpak Preinstall org.libreoffice.LibreOffice]
+Branch=stable
+
+[Flatpak Preinstall work.openpaper.Paperwork]
+Branch=stable
+
+[Flatpak Preinstall io.mpv.Mpv]
+Branch=stable
+
+[Flatpak Preinstall dev.zed.Zed]
+Branch=stable
+
 EOF
 
 # E. Enforce system-wide uniform global flatpak override templates
@@ -73,8 +91,10 @@ cat << 'EOF' > /etc/flatpak/overrides/global
 filesystems=~/.themes:ro;~/.config/gtk-3.0:ro;~/.config/gtk-4.0:ro;
 
 [Environment]
-GTK_THEME=adw-gtk3
+GTK_THEME=adw-gtk3-dark
 EOF
+
+
 
 # =====================================================================
 # 6. SYSTEM CONFIGURATIONS & COMPANION WORKAROUNDS
