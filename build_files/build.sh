@@ -19,10 +19,10 @@ cups bluez-cups kernel-modules-extra symlinks zip wget2 dnf5-plugins fish system
 echo "Audio packages"
 dnf -y install --setopt=install_weak_deps=False alsa-firmware alsa-tools-firmware \
 alsa-utils pipewire pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit \
-gstreamer1-plugins-good gstreamer1-plugins-bad-free pipewire-alsa pipewire-gstreamer
+ pipewire-alsa pipewire-gstreamer
 
 echo "Niri and GUI apps"
-dnt -y install niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako  \
+dnf -y install niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako  \
 paperwork imv caja atril engrampa adw-gtk3-theme
 
 # =====================================================================
@@ -33,7 +33,7 @@ dnf install -y terra-release-multimedia terra-release-extras
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
 unrar zed helium-browser-bin x264 x265 vulkan-loader mesa-libEGL vulkan-tools vkBasalt \
 steam terra-gamescope gamemode protonplus heroic-games-launcher vesktop
-#dnf install -y ffmpeg xevd NetworkManager-openvpn-gnome
+#dnf install -y ffmpeg xevd NetworkManager-openvpn-gnome gstreamer1-plugins-good gstreamer1-plugins-bad-free
 
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
