@@ -11,8 +11,8 @@ nano-default-editor
 # 2. BASE SYSTEM RUNTIMES (CORE REPO LAYER)
 # =====================================================================
 dnf install -y greetd greetd-selinux \
-kernel-modules-extra tcpdump symlinks appstream  zip unzip wget2 bluez-cups dnf5-plugins fish \
-flatpak flatpak-selinux libva-intel-media-driversystemd-container rootfiles
+kernel-modules-extra tcpdump symlinks appstream zip unzip wget2 bluez-cups dnf5-plugins fish \
+flatpak flatpak-selinux libva-intel-media-driver systemd-container rootfiles
 echo "Networking"
 dnf -y install dhcp-client firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn openvpn systemd-networkd
 echo "Firmware"
