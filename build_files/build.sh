@@ -15,6 +15,16 @@ dhcp-client firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManage
 openvpn systemd-networkd tcpdump iwlwifi-mld-firmware iwlwifi-mvm-firmware libva-intel-media-driver \
 system-config-printer-udev system-config-printer-libs sane-backends-drivers-cameras sane-backends-drivers-scanners \
 cups bluez-cups kernel-modules-extra symlinks zip wget2 dnf5-plugins fish systemd-container rootfiles \
+niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
+paperwork imv caja atril engrampa
+
+# =====================================================================
+# 4. EXTERNAL REPOSITORY (RPMFUSION)
+# =====================================================================
+dnf install -y \
+    https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm \
+    https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
+dnf install -y ffmpeg ffmpegthumbnailer
 
 # =====================================================================
 # 4. EXTERNAL REPOSITORY (TERRA)
@@ -22,12 +32,11 @@ cups bluez-cups kernel-modules-extra symlinks zip wget2 dnf5-plugins fish system
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 dnf install -y terra-release-multimedia terra-release-extras
 
-dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
-niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako unrar \
+dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter unrar \
 alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-pulseaudio pipewire-gstreamer \
-pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa \
-paperwork imv caja atril engrampa adw-gtk3-theme zed helium-browser-bin vesktop
-#dnf install -y ffmpeg xevd NetworkManager-openvpn-gnome gstreamer1-plugins-good gstreamer1-plugins-bad-free
+pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa gstreamer1-plugins-good gstreamer1-plugins-bad-free\
+zed helium-browser-bin vesktop
+#dnf install -y ffmpeg xevd NetworkManager-openvpn-gnome
 #dnf install --setopt=install_weak_deps=False -y fdk-aac ffmpeg steam  heroic-games-launcher \
 #libavcodec libavdevice libavformat libavutil libswresample protonplus terra-gamescope x264 x265
 # vulkan-loader mesa-libEGL vulkan-tools gamemode vkBasalt
