@@ -18,8 +18,9 @@ sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles dhcp-clie
 system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwifi-mvm-firmware
 
 dnf install --setopt=install_weak_deps=False alsa-firmware alsa-tools-firmware alsa-utils \
-pipewire ImageMagick pipewire-alsa pipewire-pulseaudio pipewire-utils \
-pipewire-jack-audio-connection-kit
+pipewire  pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit
+
+dnf install --setopt=install_weak_deps=False ImageMagick
 # =====================================================================
 # 3. CORE REPO PACKAGES (NO WEAKDEPS)
 # =====================================================================
