@@ -28,15 +28,13 @@ dnf install -y terra-release-multimedia terra-release-extras
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
 unrar zed helium-browser-bin x264 x265 vulkan-loader mesa-libEGL vulkan-tools vkBasalt \
 steam terra-gamescope gamemode protonplus heroic-games-launcher
-#dnf install -y ffmpeg xevd
+#dnf install -y ffmpeg xevd NetworkManager-openvpn-gnome
 
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
 # =====================================================================
-# Create core target paths for declarative remote setups
-echo "Is it gnome deps?"
-dnf -y install  NetworkManager-openvpn-gnome
 dnf install -y appstream flatpak flatpak-selinux
+# Create core target paths for declarative remote setups
 mkdir -p /etc/flatpak/remotes.d
 mkdir -p /etc/flatpak/preinstall.d
 mkdir -p /etc/systemd/system
@@ -62,10 +60,6 @@ Branch=stable
 
 [Flatpak Preinstall md.obsidian.Obsidian]
 Branch=stable
-
-[Flatpak Preinstall dev.zed.Zed]
-Branch=stable
-EOF
 
 
 # C. Generate first-boot systemd synchronization manager to run once the network goes online
