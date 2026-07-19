@@ -18,7 +18,7 @@ cups bluez-cups kernel-modules-extra symlinks zip wget2 dnf5-plugins fish system
 
 echo "Audio packages"
 dnf -y install --setopt=install_weak_deps=False alsa-firmware alsa-tools-firmware \
-alsa-utils pipewire pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit\
+alsa-utils pipewire pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit \
 gstreamer1-plugins-good gstreamer1-plugins-bad-free pipewire-alsa pipewire-gstreamer
 
 echo "Niri and GUI apps"
@@ -32,7 +32,7 @@ wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos
 dnf install -y terra-release-multimedia terra-release-extras
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
 unrar zed helium-browser-bin x264 x265 vulkan-loader mesa-libEGL vulkan-tools vkBasalt \
-steam terra-gamescope gamemode protonplus heroic-games-launcher
+steam terra-gamescope gamemode protonplus heroic-games-launcher vesktop
 #dnf install -y ffmpeg xevd NetworkManager-openvpn-gnome
 
 # =====================================================================
@@ -60,12 +60,8 @@ Branch=stable
 [Flatpak Preinstall com.spotify.Client]
 Branch=stable
 
-[Flatpak Preinstall com.discordapp.Discord]
-Branch=stable
-
 [Flatpak Preinstall md.obsidian.Obsidian]
 Branch=stable
-
 
 # C. Generate first-boot systemd synchronization manager to run once the network goes online
 cat << 'EOF' > /etc/systemd/system/aethera-flatpak-sync.service
