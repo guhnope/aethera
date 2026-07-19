@@ -10,15 +10,18 @@ nano-default-editor
 # =====================================================================
 # 2. BASE SYSTEM RUNTIMES (CORE REPO LAYER)
 # =====================================================================
-dnf install -y greetd greetd-selinux \
-kernel-modules-extra tcpdump symlinks appstream zip unzip wget2 bluez-cups dnf5-plugins fish \
-flatpak flatpak-selinux libva-intel-media-driver systemd-container rootfiles
+echo "base base"
+dnf -y install kernel-modules-extra symlinks zip wget2 dnf5-plugins fish systemd-container rootfiles
+dnf -y install
+echo "Greetd"
+dnf install -y greetd greetd-selinux
+echo "flatpak"
+dnf install -y appstream flatpak flatpak-selinux
 echo "Networking"
-dnf -y install dhcp-client firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn openvpn systemd-networkd
-echo "Firmware"
-dnf install -y iwlwifi-mld-firmware iwlwifi-mvm-firmware
+dnf -y install dhcp-client firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn openvpn systemd-networkd tcpdump
+dnf install -y iwlwifi-mld-firmware iwlwifi-mvm-firmware libva-intel-media-driver
 echo "Printers and Scanners"
-dnf install -y cups system-config-printer-udev system-config-printer-libs sane-backends-drivers-cameras sane-backends-drivers-scanners
+dnf install -y cups bluez-cups system-config-printer-udev system-config-printer-libs sane-backends-drivers-cameras sane-backends-drivers-scanners
 echo "Is it gnome deps?"
 dnf -y install  NetworkManager-openvpn-gnome
 # =====================================================================
@@ -27,7 +30,7 @@ dnf -y install  NetworkManager-openvpn-gnome
 dnf install --setopt=install_weak_deps=False -y neovim  \
 niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
 pipewire-gstreamer gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril engrampa \
-alsa-firmware alsa-tools-firmware alsa-utils pipewire  pipewire-alsa pipewire-pulseaudio \
+alsa-firmware alsa-tools-firmware alsa-utils pipewire  pipewire-alsa pipewire-pulseaudio  \
 pipewire-utils pipewire-jack-audio-connection-kitpaperwork gamescope gamemode
 
 # =====================================================================
