@@ -35,7 +35,7 @@ dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greete
 unrar zed helium-browser-bin
 #dnf install -y  ffmpeg x264 x265 xevd protonplus terra-protontricks terra-wine-dxvk \
 # vulkan-loader mesa-libEGL vulkan-tools vkBasalt
-dnf install -y steam  terra-gamescope gamemode heroic-games-launcher
+dnf install -y steam gamescope gamemode heroic-games-launcher
 
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
