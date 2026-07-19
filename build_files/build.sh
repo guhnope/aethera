@@ -24,7 +24,7 @@ system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwi
 # =====================================================================
 dnf install --setopt=install_weak_deps=False -y neovim  \
 niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
-gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril engrampa paperwork
+gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril engrampa paperwork gamescope gamemode
 
 # =====================================================================
 # 4. EXTERNAL REPOSITORY (TERRA)
@@ -35,7 +35,7 @@ dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greete
 unrar zed helium-browser-bin
 #dnf install -y  ffmpeg x264 x265 xevd protonplus terra-protontricks terra-wine-dxvk \
 # vulkan-loader mesa-libEGL vulkan-tools vkBasalt
-dnf install -y steam gamescope gamemode heroic-games-launcher
+dnf install -y steam
 
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
