@@ -25,11 +25,11 @@ dnf install -y terra-release-multimedia terra-release-extras
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
 niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako unrar \
 alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-pulseaudio pipewire-gstreamer \
-pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa x264 x265 \
+pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa \
 paperwork imv caja atril engrampa adw-gtk3-theme zed helium-browser-bin vesktop
 #dnf install -y ffmpeg xevd NetworkManager-openvpn-gnome gstreamer1-plugins-good gstreamer1-plugins-bad-free
 #dnf install --setopt=install_weak_deps=False -y fdk-aac ffmpeg steam  heroic-games-launcher \
-#libavcodec libavdevice libavformat libavutil libswresample protonplus terra-gamescope
+#libavcodec libavdevice libavformat libavutil libswresample protonplus terra-gamescope x264 x265
 # vulkan-loader mesa-libEGL vulkan-tools gamemode vkBasalt
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
