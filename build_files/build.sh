@@ -35,7 +35,7 @@ dnf install -y ffmpeg ffmpegthumbnailer steam unrar x264 x265
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter  \
-zed helium-browser-bin vesktop protonplus heroic-games-launche
+zed helium-browser-bin vesktop protonplus heroic-games-launcher
 #
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
