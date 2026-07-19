@@ -12,7 +12,6 @@ nano-default-editor
 # =====================================================================
 echo "base base"
 dnf -y install kernel-modules-extra symlinks zip wget2 dnf5-plugins fish systemd-container rootfiles
-dnf -y install
 echo "Greetd"
 dnf install -y greetd greetd-selinux
 echo "flatpak"
