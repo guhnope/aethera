@@ -13,12 +13,13 @@ nano-default-editor
 dnf install -y greetd greetd-selinux \
 kernel-modules-extra tcpdump symlinks appstream cups zip unzip wget2 bluez-cups dnf5-plugins \
 alsa-firmware alsa-tools-firmware alsa-utils pipewire flatpak flatpak-selinux \
-pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit dhcp-client \
+ dhcp-client \
 firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn libva-intel-media-driver \
 NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd fish ImageMagick \
 sane-backends-drivers-cameras sane-backends-drivers-scanners rootfiles dhcp-client \
 system-config-printer-udev system-config-printer-libs iwlwifi-mld-firmware iwlwifi-mvm-firmware
 
+dnf install --setopt=install_weak_deps=False ImageMagick pipewire-alsa pipewire-pulseaudio pipewire-utils pipewire-jack-audio-connection-kit
 # =====================================================================
 # 3. CORE REPO PACKAGES (NO WEAKDEPS)
 # =====================================================================
