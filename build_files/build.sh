@@ -18,7 +18,7 @@ NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd fish roo
 echo "Firmware"
 dnf install -y  iwlwifi-mld-firmware iwlwifi-mvm-firmware
 echo "Printers and Scanners"
-dnf install -y cups system-config-printer-udev system-config-printer-libs ane-backends-drivers-cameras sane-backends-drivers-scanners
+dnf install -y cups system-config-printer-udev system-config-printer-libs sane-backends-drivers-cameras sane-backends-drivers-scanners
 
 # =====================================================================
 # 3. CORE REPO PACKAGES (NO WEAKDEPS)
