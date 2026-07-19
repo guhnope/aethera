@@ -23,11 +23,12 @@ wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos
 dnf install -y terra-release-multimedia terra-release-extras
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
 niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako  \
-alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-pulseaudio fdk-aac \
+alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-pulseaudio  \
+fdk-aac libavcodec libavdevice libavformat libavutil vkBasalt x264 x265 unrar\
 pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa pipewire-gstreamer \
-paperwork imv caja atril engrampa adw-gtk3-theme unrar zed helium-browser-bin x264 x265 \
-vulkan-loader mesa-libEGL vulkan-tools vkBasalt gamemode terra-gamescope \
-steam protonplus heroic-games-launcher vesktop
+paperwork imv caja atril engrampa adw-gtk3-theme zed helium-browser-bin  \
+vulkan-loader mesa-libEGL vulkan-tools vesktop gamemode terra-gamescope \
+steam protonplus heroic-games-launcher
 
 #dnf install -y ffmpeg xevd NetworkManager-openvpn-gnome gstreamer1-plugins-good gstreamer1-plugins-bad-free
 
