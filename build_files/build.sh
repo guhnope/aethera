@@ -8,29 +8,17 @@ dnf remove -y vim-minimal vim-enhanced firefox firefox-langpacks gnome-keyring n
 nano-default-editor
 
 # =====================================================================
-# 2. BASE SYSTEM RUNTIMES (CORE REPO LAYER)
+# 2. CORE REPO PACKAGES (NO WEAKDEPS)
 # =====================================================================
-echo "base base"
-dnf -y install kernel-modules-extra symlinks zip wget2 dnf5-plugins fish systemd-container rootfiles
-echo "Greetd"
-dnf install -y greetd greetd-selinux
-echo "flatpak"
-dnf install -y appstream flatpak flatpak-selinux
-echo "Networking"
-dnf -y install dhcp-client firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn openvpn systemd-networkd tcpdump
-dnf install -y iwlwifi-mld-firmware iwlwifi-mvm-firmware libva-intel-media-driver
-echo "Printers and Scanners"
-dnf install -y cups bluez-cups system-config-printer-udev system-config-printer-libs sane-backends-drivers-cameras sane-backends-drivers-scanners
-echo "Is it gnome deps?"
-dnf -y install  NetworkManager-openvpn-gnome
-# =====================================================================
-# 3. CORE REPO PACKAGES (NO WEAKDEPS)
-# =====================================================================
-dnf install --setopt=install_weak_deps=False -y neovim  \
+dnf install --setopt=install_weak_deps=False -y greetd greetd-selinux neovim  \
+dhcp-client firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn \
+openvpn systemd-networkd tcpdump iwlwifi-mld-firmware iwlwifi-mvm-firmware libva-intel-media-driver \
+system-config-printer-udev system-config-printer-libs sane-backends-drivers-cameras sane-backends-drivers-scanners \
+cups bluez-cups kernel-modules-extra symlinks zip wget2 dnf5-plugins fish systemd-container rootfiles \
 niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
 pipewire-gstreamer gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril engrampa \
 alsa-firmware alsa-tools-firmware alsa-utils pipewire  pipewire-alsa pipewire-pulseaudio  \
-pipewire-utils pipewire-jack-audio-connection-kitpaperwork gamescope gamemode
+pipewire-utils pipewire-jack-audio-connection-kitpaperwork
 
 # =====================================================================
 # 4. EXTERNAL REPOSITORY (TERRA)
@@ -38,13 +26,17 @@ pipewire-utils pipewire-jack-audio-connection-kitpaperwork gamescope gamemode
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 dnf install -y terra-release-multimedia terra-release-extras
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter \
-unrar zed helium-browser-bin  x264 x265 vulkan-loader mesa-libEGL vulkan-tools vkBasalt
-#dnf install -y steam ffmpeg xevd protonplus terra-protontricks terra-wine-dxvk
+unrar zed helium-browser-bin x264 x265 vulkan-loader mesa-libEGL vulkan-tools vkBasalt \
+steam terra-gamescope gamemode protonplus heroic-games-launcher
+#dnf install -y ffmpeg xevd
 
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
 # =====================================================================
 # Create core target paths for declarative remote setups
+echo "Is it gnome deps?"
+dnf -y install  NetworkManager-openvpn-gnome
+dnf install -y appstream flatpak flatpak-selinux
 mkdir -p /etc/flatpak/remotes.d
 mkdir -p /etc/flatpak/preinstall.d
 mkdir -p /etc/systemd/system
