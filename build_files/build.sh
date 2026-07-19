@@ -26,7 +26,7 @@ paperwork imv caja atril engrampa gamemode gamescope
 dnf install -y \
     https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm \
     https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
-dnf install -y ffmpeg ffmpegthumbnailer steam unrar x264 x265 vulkan-tools vkBasalt \
+dnf install -y ffmpeg ffmpegthumbnailer steam unrar x264 x265 vulkan-tools vkBasalt
 
 
 # =====================================================================
