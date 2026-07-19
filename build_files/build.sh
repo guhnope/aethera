@@ -66,25 +66,6 @@ Branch=stable
 Branch=stable
 EOF
 
-# C. Generate first-boot systemd synchronization manager to run once the network goes online
-cat << 'EOF' > /etc/systemd/system/aethera-flatpak-sync.service
-[Unit]
-Description=Aethera Linux First-Boot Flatpak Deployment Engine
-After=network-online.target
-Wants=network-online.target
-
-[Service]
-Type=oneshot
-ExecStart=/usr/bin/flatpak preinstall -y --system
-RemainAfterExit=yes
-
-[Install]
-WantedBy=multi-user.target
-EOF
-
-# D. Enable the system sync unit inside the image environment context
-systemctl enable aethera-flatpak-sync.service
-
 # E. Enforce system-wide uniform global flatpak override templates
 mkdir -p /etc/flatpak/overrides
 cat << 'EOF' > /etc/flatpak/overrides/global
