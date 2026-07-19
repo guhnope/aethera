@@ -11,15 +11,16 @@ nano-default-editor
 # 2. BASE SYSTEM RUNTIMES (CORE REPO LAYER)
 # =====================================================================
 dnf install -y greetd greetd-selinux \
-kernel-modules-extra tcpdump symlinks appstream  zip unzip wget2 bluez-cups dnf5-plugins \
- flatpak flatpak-selinux dhcp-client firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn libva-intel-media-driver \
-NetworkManager-openvpn-gnome openvpn systemd-container systemd-networkd fish rootfiles dhcp-client
-
+kernel-modules-extra tcpdump symlinks appstream  zip unzip wget2 bluez-cups dnf5-plugins fish \
+flatpak flatpak-selinux libva-intel-media-driversystemd-container rootfiles
+echo "Networking"
+dnf -y install dhcp-client firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn openvpn systemd-networkd
 echo "Firmware"
-dnf install -y  iwlwifi-mld-firmware iwlwifi-mvm-firmware
+dnf install -y iwlwifi-mld-firmware iwlwifi-mvm-firmware
 echo "Printers and Scanners"
 dnf install -y cups system-config-printer-udev system-config-printer-libs sane-backends-drivers-cameras sane-backends-drivers-scanners
-
+echo "Is it gnome deps?"
+dnf -y install  NetworkManager-openvpn-gnome
 # =====================================================================
 # 3. CORE REPO PACKAGES (NO WEAKDEPS)
 # =====================================================================
@@ -27,7 +28,7 @@ dnf install --setopt=install_weak_deps=False -y neovim  \
 niri xwayland-satellite matugen cliphist wl-clipboard wlsunset grim slurp mako adw-gtk3-theme \
 pipewire-gstreamer gstreamer1-plugins-good gstreamer1-plugins-bad-free imv caja atril engrampa \
 alsa-firmware alsa-tools-firmware alsa-utils pipewire  pipewire-alsa pipewire-pulseaudio \
-pipewire-utils pipewire-jack-audio-connection-kitpaperwork gamescope gamemode ImageMagick
+pipewire-utils pipewire-jack-audio-connection-kitpaperwork gamescope gamemode
 
 # =====================================================================
 # 4. EXTERNAL REPOSITORY (TERRA)
