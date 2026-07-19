@@ -33,7 +33,6 @@ dnf install -y ffmpeg ffmpegthumbnailer steam unrar x264 x265 vulkan-tools vkBas
 # 4. EXTERNAL REPOSITORY (TERRA)
 # =====================================================================
 wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
-dnf install -y terra-release-multimedia terra-release-extras
 
 dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter  \
 zed helium-browser-bin vesktop protonplus heroic-games-launcher
