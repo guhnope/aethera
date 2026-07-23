@@ -8,7 +8,7 @@ dnf remove -y vim-minimal vim-enhanced firefox firefox-langpacks gnome-keyring n
 nano-default-editor
 
 # =====================================================================
-# 2. CORE REPO PACKAGES (NO WEAKDEPS)
+# 2. CORE REPO PACKAGES
 # =====================================================================
 dnf install --setopt=install_weak_deps=False -y greetd greetd-selinux neovim  \
 dhcp-client firewalld NetworkManager-wifi NetworkManager-bluetooth NetworkManager-openvpn \
@@ -19,23 +19,26 @@ kernel-modules-extra symlinks zip wget2 dnf5-plugins fish systemd-container root
 alsa-firmware alsa-tools-firmware alsa-utils pipewire pipewire-pulseaudio pipewire-gstreamer \
 pipewire-utils pipewire-jack-audio-connection-kit pipewire-alsa \
 niri xwayland-satellite cliphist wl-clipboard wlsunset grim slurp mako  \
-adw-gtk3-theme qt6ct matugen imv caja atril engrampa
+adw-gtk3-theme qt6ct imv caja atril engrampa unrar
+
 
 # =====================================================================
-# 4. EXTERNAL REPOSITORY (RPMFUSION)
+# 2. COPR REPO PACKAGES
+# =====================================================================
+dnf copr enable lionheartp/Hyprland
+sudo dnf copr enable scottames/ghostty
+dnf install --setopt=install_weak_deps=False -y noctalia-git noctalia-greeter \
+gtk4-layer-shell ghostty matugen
+#
+# =====================================================================
+# 4. EXTERNAL REPOSITORY
 # =====================================================================
 dnf install -y \
     https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-44.noarch.rpm \
     https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-44.noarch.rpm
-    dnf install -y ffmpeg ffmpegthumbnailer unrar x264 x265
+    dnf install -y ffmpeg ffmpegthumbnailer x264 x265
 
-# =====================================================================
-# 4. EXTERNAL REPOSITORY (TERRA)
-# =====================================================================
-wget2 -O /etc/yum.repos.d/terra.repo https://github.com/terrapkg/subatomic-repos/raw/main/terra.repo
 
-dnf install --setopt=install_weak_deps=False -y ghostty noctalia noctalia-greeter
-#
 # =====================================================================
 # 5. DECLARATIVE SYSTEM-WIDE FLATPAK PROVISIONING
 # =====================================================================
