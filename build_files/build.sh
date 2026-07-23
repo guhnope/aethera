@@ -25,8 +25,8 @@ adw-gtk3-theme qt6ct imv caja atril engrampa unrar
 # =====================================================================
 # 2. COPR REPO PACKAGES
 # =====================================================================
-dnf copr enable lionheartp/Hyprland
-sudo dnf copr enable scottames/ghostty
+dnf copr enable -y lionheartp/Hyprland
+dnf copr enable -y scottames/ghostty
 dnf install --setopt=install_weak_deps=False -y noctalia-git noctalia-greeter \
 gtk4-layer-shell ghostty matugen
 #
