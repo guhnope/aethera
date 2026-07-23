@@ -26,7 +26,6 @@ jobs:
           image_repo: ghcr.io/guhnope
           image_tag: latest
           version: 44
-          variant: atomic
           iso_name: aethera-44.iso
 
       - name: Upload ISO as artifact
